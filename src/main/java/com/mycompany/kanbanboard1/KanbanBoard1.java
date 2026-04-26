@@ -10,7 +10,7 @@ package com.mycompany.kanbanboard1;
  */
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import GUI.MainBoard;
 
 public class KanbanBoard1 {
 
@@ -41,6 +41,11 @@ public class KanbanBoard1 {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        
+        java.awt.EventQueue.invokeLater(() -> {
+        MainBoard frame = new MainBoard();
+        frame.setVisible(true);
+    });
     }
     
 }
