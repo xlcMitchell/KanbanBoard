@@ -35,13 +35,23 @@ public class MainBoard extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         centerContainer = new javax.swing.JPanel();
         panelGridHeadings = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        requestedHeading = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        inprogressHeading = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        completeHeading = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         panelGridTaskContainers = new javax.swing.JPanel();
         todoContainer = new javax.swing.JPanel();
         inprogressContainer = new javax.swing.JPanel();
         completeContainer = new javax.swing.JPanel();
+        ExpediteSection = new javax.swing.JPanel();
+        expediteHeading = new javax.swing.JPanel();
+        expediteLabel = new javax.swing.JLabel();
+        expediteGrid = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -49,93 +59,119 @@ public class MainBoard extends javax.swing.JFrame {
         bodyPanel.setBackground(new java.awt.Color(255, 255, 255));
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
+        topPanel.setBackground(new java.awt.Color(255, 255, 255));
+        topPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         topPanel.setOpaque(false);
+        topPanel.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Kanban Board");
+        topPanel.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         jButton1.setBackground(new java.awt.Color(51, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Add Task");
-
-        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
-        topPanel.setLayout(topPanelLayout);
-        topPanelLayout.setHorizontalGroup(
-            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(73, 73, 73)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
-        topPanelLayout.setVerticalGroup(
-            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanelLayout.createSequentialGroup()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1))
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        topPanel.add(jButton1, java.awt.BorderLayout.LINE_END);
 
         bodyPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
+        centerContainer.setBackground(new java.awt.Color(255, 255, 255));
+        centerContainer.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10));
+        centerContainer.setMaximumSize(new java.awt.Dimension(2147483647, 1000));
         centerContainer.setLayout(new java.awt.BorderLayout());
 
         panelGridHeadings.setBackground(new java.awt.Color(255, 255, 255));
-        panelGridHeadings.setMaximumSize(new java.awt.Dimension(32767, 45));
-        panelGridHeadings.setPreferredSize(new java.awt.Dimension(423, 45));
+        panelGridHeadings.setMaximumSize(new java.awt.Dimension(32767, 35));
+        panelGridHeadings.setPreferredSize(new java.awt.Dimension(423, 35));
         panelGridHeadings.setLayout(new java.awt.GridLayout(1, 3, 15, 0));
 
-        jPanel3.setBackground(new java.awt.Color(51, 102, 255));
+        requestedHeading.setBackground(new java.awt.Color(51, 102, 255));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 131, Short.MAX_VALUE)
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("REQUESTED");
+
+        javax.swing.GroupLayout requestedHeadingLayout = new javax.swing.GroupLayout(requestedHeading);
+        requestedHeading.setLayout(requestedHeadingLayout);
+        requestedHeadingLayout.setHorizontalGroup(
+            requestedHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+            .addGroup(requestedHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(requestedHeadingLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
-        );
-
-        panelGridHeadings.add(jPanel3);
-
-        jPanel4.setBackground(new java.awt.Color(255, 153, 0));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 131, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
-        );
-
-        panelGridHeadings.add(jPanel4);
-
-        jPanel5.setBackground(new java.awt.Color(0, 204, 0));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 131, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+        requestedHeadingLayout.setVerticalGroup(
+            requestedHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+            .addGroup(requestedHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(requestedHeadingLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        panelGridHeadings.add(jPanel5);
+        panelGridHeadings.add(requestedHeading);
+
+        inprogressHeading.setBackground(new java.awt.Color(255, 153, 0));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("IN PROGRESS");
+
+        javax.swing.GroupLayout inprogressHeadingLayout = new javax.swing.GroupLayout(inprogressHeading);
+        inprogressHeading.setLayout(inprogressHeadingLayout);
+        inprogressHeadingLayout.setHorizontalGroup(
+            inprogressHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+            .addGroup(inprogressHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(inprogressHeadingLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        inprogressHeadingLayout.setVerticalGroup(
+            inprogressHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+            .addGroup(inprogressHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(inprogressHeadingLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelGridHeadings.add(inprogressHeading);
+
+        completeHeading.setBackground(new java.awt.Color(0, 204, 0));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("DONE");
+
+        javax.swing.GroupLayout completeHeadingLayout = new javax.swing.GroupLayout(completeHeading);
+        completeHeading.setLayout(completeHeadingLayout);
+        completeHeadingLayout.setHorizontalGroup(
+            completeHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+            .addGroup(completeHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(completeHeadingLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        completeHeadingLayout.setVerticalGroup(
+            completeHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+            .addGroup(completeHeadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(completeHeadingLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        panelGridHeadings.add(completeHeading);
 
         centerContainer.add(panelGridHeadings, java.awt.BorderLayout.NORTH);
 
@@ -149,11 +185,11 @@ public class MainBoard extends javax.swing.JFrame {
         todoContainer.setLayout(todoContainerLayout);
         todoContainerLayout.setHorizontalGroup(
             todoContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 129, Short.MAX_VALUE)
+            .addGap(0, 114, Short.MAX_VALUE)
         );
         todoContainerLayout.setVerticalGroup(
             todoContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 199, Short.MAX_VALUE)
+            .addGap(0, 78, Short.MAX_VALUE)
         );
 
         panelGridTaskContainers.add(todoContainer);
@@ -165,11 +201,11 @@ public class MainBoard extends javax.swing.JFrame {
         inprogressContainer.setLayout(inprogressContainerLayout);
         inprogressContainerLayout.setHorizontalGroup(
             inprogressContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 129, Short.MAX_VALUE)
+            .addGap(0, 114, Short.MAX_VALUE)
         );
         inprogressContainerLayout.setVerticalGroup(
             inprogressContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 199, Short.MAX_VALUE)
+            .addGap(0, 78, Short.MAX_VALUE)
         );
 
         panelGridTaskContainers.add(inprogressContainer);
@@ -181,16 +217,86 @@ public class MainBoard extends javax.swing.JFrame {
         completeContainer.setLayout(completeContainerLayout);
         completeContainerLayout.setHorizontalGroup(
             completeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 129, Short.MAX_VALUE)
+            .addGap(0, 114, Short.MAX_VALUE)
         );
         completeContainerLayout.setVerticalGroup(
             completeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 199, Short.MAX_VALUE)
+            .addGap(0, 78, Short.MAX_VALUE)
         );
 
         panelGridTaskContainers.add(completeContainer);
 
         centerContainer.add(panelGridTaskContainers, java.awt.BorderLayout.CENTER);
+
+        ExpediteSection.setBackground(new java.awt.Color(204, 204, 204));
+        ExpediteSection.setForeground(new java.awt.Color(255, 255, 255));
+        ExpediteSection.setMaximumSize(new java.awt.Dimension(32767, 35));
+        ExpediteSection.setLayout(new java.awt.BorderLayout());
+
+        expediteHeading.setBackground(new java.awt.Color(255, 51, 51));
+        expediteHeading.setMaximumSize(new java.awt.Dimension(32767, 35));
+        expediteHeading.setLayout(new java.awt.BorderLayout());
+
+        expediteLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        expediteLabel.setForeground(new java.awt.Color(255, 255, 255));
+        expediteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        expediteLabel.setText("Expedite");
+        expediteLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        expediteHeading.add(expediteLabel, java.awt.BorderLayout.CENTER);
+
+        ExpediteSection.add(expediteHeading, java.awt.BorderLayout.PAGE_START);
+
+        expediteGrid.setBackground(new java.awt.Color(255, 255, 255));
+        expediteGrid.setLayout(new java.awt.GridLayout(1, 3, 15, 0));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 114, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 104, Short.MAX_VALUE)
+        );
+
+        expediteGrid.add(jPanel1);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 114, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 104, Short.MAX_VALUE)
+        );
+
+        expediteGrid.add(jPanel2);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 114, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 104, Short.MAX_VALUE)
+        );
+
+        expediteGrid.add(jPanel3);
+
+        ExpediteSection.add(expediteGrid, java.awt.BorderLayout.CENTER);
+
+        centerContainer.add(ExpediteSection, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.add(centerContainer, java.awt.BorderLayout.CENTER);
 
@@ -225,17 +331,27 @@ public class MainBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ExpediteSection;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel centerContainer;
     private javax.swing.JPanel completeContainer;
+    private javax.swing.JPanel completeHeading;
+    private javax.swing.JPanel expediteGrid;
+    private javax.swing.JPanel expediteHeading;
+    private javax.swing.JLabel expediteLabel;
     private javax.swing.JPanel inprogressContainer;
+    private javax.swing.JPanel inprogressHeading;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel panelGridHeadings;
     private javax.swing.JPanel panelGridTaskContainers;
+    private javax.swing.JPanel requestedHeading;
     private javax.swing.JPanel todoContainer;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
