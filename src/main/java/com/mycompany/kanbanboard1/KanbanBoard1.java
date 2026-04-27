@@ -29,7 +29,7 @@ public class KanbanBoard1 {
              var rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                System.out.printf("%-5s %-25s %-15s %-15s %-12s %-12s %-20s%n",
+                System.out.printf("%-5s %-5s %-25s %-12s %-12s %-5s %-5s %-10s %-30s%n",
                         rs.getInt("taskID"),
                         rs.getInt("assignedUser"),
                         rs.getString("taskName"),
