@@ -11,6 +11,7 @@ package com.mycompany.kanbanboard1;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import GUI.MainBoard;
+import GUI.MainBoardExperiment;
 
 public class KanbanBoard1 {
 
@@ -20,7 +21,7 @@ public class KanbanBoard1 {
     public static void main(String[] args) {
         //reference to db stored in project folder
         var url = "jdbc:sqlite:Kanban.db";
-        var sql = "SELECT * FROM Cards"; //sql query for Kanban.db to return all rows
+        var sql = "SELECT * FROM task"; //sql query for Kanban.db to return all rows
 
       
         try (var conn = DriverManager.getConnection(url);
@@ -29,13 +30,15 @@ public class KanbanBoard1 {
 
             while (rs.next()) {
                 System.out.printf("%-5s %-25s %-15s %-15s %-12s %-12s %-20s%n",
-                        rs.getInt("cardID"),
-                        rs.getString("details"),
-                        rs.getString("owner"),
-                        rs.getString("holder"),
-                        rs.getString("status"),
+                        rs.getInt("taskID"),
+                        rs.getInt("assignedUser"),
+                        rs.getString("taskName"),
+                        rs.getString("timeStamp"),
+                        rs.getString("dueDate"),
+                        rs.getInt("taskList"),
+                        rs.getInt("position"),
                         rs.getString("swimlane"),
-                        rs.getString("timestamp")
+                        rs.getString("taskDescription")
                 );
             }
         } catch (SQLException e) {
