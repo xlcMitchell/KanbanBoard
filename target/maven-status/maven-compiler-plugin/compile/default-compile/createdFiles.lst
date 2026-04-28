@@ -1,5 +1,7 @@
+Model\User.class
+com\mycompany\kanbanboard1\KanbanBoard1.class
+Model\Task.class
 GUI\MainBoard.class
 GUI\taskCard.class
 GUI\MainBoardExperiment.class
-com\mycompany\kanbanboard1\KanbanBoard1.class
 db\DBConnection.class
