@@ -12,6 +12,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import GUI.MainBoard;
 import GUI.MainBoardExperiment;
+import db.DBConnection;
+import java.sql.Connection;
 
 public class KanbanBoard1 {
 
@@ -20,11 +22,12 @@ public class KanbanBoard1 {
      */
     public static void main(String[] args) {
         //reference to db stored in project folder
-        var url = "jdbc:sqlite:Kanban.db";
+        //var url = "jdbc:sqlite:Kanban.db"; var conn = DriverManager.getConnection(url);
+        Connection conn = DBConnection.getConnection();
         var sql = "SELECT * FROM task"; //sql query for Kanban.db to return all rows
 
       
-        try (var conn = DriverManager.getConnection(url);
+        try (
              var stmt = conn.createStatement();
              var rs = stmt.executeQuery(sql)) {
 

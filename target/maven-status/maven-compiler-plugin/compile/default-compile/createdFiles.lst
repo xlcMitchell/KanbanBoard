@@ -1,3 +1,5 @@
-com\mycompany\kanbanboard1\KanbanBoard1.class
 GUI\MainBoard.class
+GUI\taskCard.class
 GUI\MainBoardExperiment.class
+com\mycompany\kanbanboard1\KanbanBoard1.class
+db\DBConnection.class
