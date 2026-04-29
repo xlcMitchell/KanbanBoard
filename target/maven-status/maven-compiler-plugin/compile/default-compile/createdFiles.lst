@@ -5,3 +5,4 @@ GUI\MainBoard.class
 GUI\taskCard.class
 GUI\MainBoardExperiment.class
 db\DBConnection.class
+db\TaskDAO.class

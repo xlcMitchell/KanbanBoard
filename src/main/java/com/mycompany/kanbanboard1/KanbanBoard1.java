@@ -14,6 +14,9 @@ import GUI.MainBoard;
 import GUI.MainBoardExperiment;
 import db.DBConnection;
 import java.sql.Connection;
+import db.TaskDAO;
+import java.util.List;
+import Model.Task;
 
 public class KanbanBoard1 {
 
@@ -23,6 +26,7 @@ public class KanbanBoard1 {
     public static void main(String[] args) {
         //reference to db stored in project folder
         //var url = "jdbc:sqlite:Kanban.db"; var conn = DriverManager.getConnection(url);
+        /*
         Connection conn = DBConnection.getConnection();
         var sql = "SELECT * FROM task"; //sql query for Kanban.db to return all rows
 
@@ -47,6 +51,16 @@ public class KanbanBoard1 {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        */
+        
+        TaskDAO dao = new TaskDAO();
+    
+        
+        List<Task> taskList = dao.getAllTasks();
+    
+    
+        if (taskList != null && !taskList.isEmpty()) {
+             System.out.println("SUCCESS: Found " + taskList.size() + " tasks!");}
         
         java.awt.EventQueue.invokeLater(() -> {
         MainBoard frame = new MainBoard();
