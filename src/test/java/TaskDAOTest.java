@@ -90,4 +90,52 @@ public void testCreateTaskWithWrongDateFormat() {
     
     System.out.println("Success: The DAO correctly blocked the incorrect date format.");
 }
+
+@Test
+public void testCreateTaskWithEmptyName() {
+    TaskDAO dao = new TaskDAO();
+    
+    // Creating a task with an empty string for the name
+    Task emptyNameTask = new Task(0, "", "Testing empty name", null, "10-10-2026", 1, 1, 1, "Standard");
+
+    // Execute
+    boolean result = dao.createTask(emptyNameTask);
+
+    // We expect false because the name is empty
+    assertFalse("createTask should return false when task name is empty", result);
+    System.out.println("Success: The DAO correctly blocked a task with an empty name.");
+}
+
+@Test
+public void testUpdateTask() {
+    TaskDAO dao = new TaskDAO();
+    
+    // Retrieve all tasks 
+    List<Task> tasks = dao.getAllTasks();
+    assertTrue("Database should not be empty for update test", !tasks.isEmpty());
+    //Update 4th index which will be taskID 6
+    Task taskToUpdate = tasks.get(4);
+    String originalName = taskToUpdate.getTaskName();
+    String newName = "Updated Name " + System.currentTimeMillis();
+    
+    //Add new task name to the object
+    taskToUpdate.setTaskName(newName);
+    
+    // Execute Update
+    boolean result = dao.updateTask(taskToUpdate);
+    assertEquals("Update should return true on success", true, result);
+    
+    // Verify - Fetch it again to make sure it actually saved
+    List<Task> updatedTasks = dao.getAllTasks();
+    boolean foundUpdated = false;
+    for (Task t : updatedTasks) {
+        if (t.getTaskID() == taskToUpdate.getTaskID() && t.getTaskName().equals(newName)) {
+            foundUpdated = true;
+            break;
+        }
+    }
+    
+    assertTrue("The task name should be updated in the database", foundUpdated);
+    System.out.println("Success: Task " + taskToUpdate.getTaskID() + " changed from '" + originalName + "' to '" + newName + "'");
+}
 }

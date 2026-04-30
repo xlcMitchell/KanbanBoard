@@ -8,7 +8,7 @@ package db;
  *
  * @author Kiwit
  * The TaskDAO handles SQLite database operations
- * This ensures the rest of the software is from databaseoperations
+ * This ensures the rest of the software is from database operations
  * Making it easy to change the database in the future
  */
 import Model.Task;
@@ -26,6 +26,12 @@ public class TaskDAO {
        if (!isValidDate(task.getDueDate())) {
         System.err.println("Validation Error: Invalid date format: " + task.getDueDate());
         return false; // don't insert any data
+    }
+       
+       // --- Check the task name is valid---
+    if (!isValidTaskName(task.getTaskName())) {
+        System.err.println("Validation Fail: Task name cannot be empty.");
+        return false; 
     }
         
         String sql = "INSERT INTO task (taskName, taskDescription, dueDate, assignedUser,taskList, position, swimlane) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -78,6 +84,18 @@ public class TaskDAO {
 
     // update task
     public boolean updateTask(Task task) {
+        
+           //make sure due date is valid format
+       if (!isValidDate(task.getDueDate())) {
+        System.err.println("Validation Error: Invalid date format: " + task.getDueDate());
+        return false; // don't insert any data
+    }
+       
+       // --- Check the task name is valid---
+    if (!isValidTaskName(task.getTaskName())) {
+        System.err.println("Validation Fail: Task name cannot be empty.");
+        return false; 
+    }
         String sql = "UPDATE task SET taskName=?, taskDescription=?, dueDate=?, assignedUser=?,taskList=?, position=?, swimlane=? WHERE taskID=?";
         
         try (Connection conn = DBConnection.getConnection();
@@ -123,5 +141,10 @@ public class TaskDAO {
     } catch (DateTimeParseException e) {
         return false;
     }
+}
+    
+    private boolean isValidTaskName(String name) {
+    //Make sure the name field is not empty or null
+    return name != null && !name.trim().isEmpty();
 }
 }

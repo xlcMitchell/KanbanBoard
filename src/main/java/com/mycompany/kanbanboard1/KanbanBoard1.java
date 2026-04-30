@@ -15,8 +15,10 @@ import GUI.MainBoardExperiment;
 import db.DBConnection;
 import java.sql.Connection;
 import db.TaskDAO;
+import db.UserDAO;
 import java.util.List;
 import Model.Task;
+import Model.User;
 
 public class KanbanBoard1 {
 
@@ -24,43 +26,19 @@ public class KanbanBoard1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //reference to db stored in project folder
-        //var url = "jdbc:sqlite:Kanban.db"; var conn = DriverManager.getConnection(url);
-        /*
-        Connection conn = DBConnection.getConnection();
-        var sql = "SELECT * FROM task"; //sql query for Kanban.db to return all rows
-
-      
-        try (
-             var stmt = conn.createStatement();
-             var rs = stmt.executeQuery(sql)) {
-
-            while (rs.next()) {
-                System.out.printf("%-5s %-5s %-25s %-12s %-12s %-5s %-5s %-10s %-30s%n",
-                        rs.getInt("taskID"),
-                        rs.getInt("assignedUser"),
-                        rs.getString("taskName"),
-                        rs.getString("timeStamp"),
-                        rs.getString("dueDate"),
-                        rs.getInt("taskList"),
-                        rs.getInt("position"),
-                        rs.getString("swimlane"),
-                        rs.getString("taskDescription")
-                );
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-        */
-        
+        //TaskDAO object test
         TaskDAO dao = new TaskDAO();
-    
-        
         List<Task> taskList = dao.getAllTasks();
-    
     
         if (taskList != null && !taskList.isEmpty()) {
              System.out.println("SUCCESS: Found " + taskList.size() + " tasks!");}
+        
+        //UserDAO Test
+        UserDAO userD = new UserDAO();
+        List <User> userList = userD.getAllUsers();
+        
+        if(userList != null && !userList.isEmpty()){
+        System.out.println("SUCCESS: Found " + userList.size() + " users!");}
         
         java.awt.EventQueue.invokeLater(() -> {
         MainBoard frame = new MainBoard();
