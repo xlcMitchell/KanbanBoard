@@ -5,8 +5,6 @@
 package db;
 
 /**
- *
- * @author Kiwit
  * The TaskDAO handles SQLite database operations
  * This ensures the rest of the software is from database operations
  * Making it easy to change the database in the future
@@ -146,5 +144,26 @@ public class TaskDAO {
     private boolean isValidTaskName(String name) {
     //Make sure the name field is not empty or null
     return name != null && !name.trim().isEmpty();
+}
+    
+    public boolean moveTask(int taskID, int newColumn, boolean isExpedited) {
+ 
+    String swimlaneValue = isExpedited ? "Expedite" : "Standard";
+    String sql = "UPDATE tasks SET taskList = ?, swimlane = ? WHERE taskID = ?";
+
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        
+        pstmt.setInt(1, newColumn);
+        pstmt.setString(2, swimlaneValue);
+        pstmt.setInt(3, taskID);
+
+        int rowsAffected = pstmt.executeUpdate();
+        return rowsAffected > 0;
+
+    } catch (SQLException e) {
+        System.err.println("Error moving task: " + e.getMessage());
+        return false;
+    }
 }
 }

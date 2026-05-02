@@ -2,8 +2,10 @@ Model\User.class
 com\mycompany\kanbanboard1\KanbanBoard1.class
 Model\Task.class
 db\UserDAO.class
+Controller\BoardController.class
 GUI\MainBoard.class
 GUI\taskCard.class
 GUI\MainBoardExperiment.class
 db\DBConnection.class
 db\TaskDAO.class
+Model\TaskList.class

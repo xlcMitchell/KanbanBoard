@@ -1,4 +1,5 @@
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\com\mycompany\kanbanboard1\KanbanBoard1.java
+C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\Controller\BoardController.java
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\db\DBConnection.java
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\db\TaskDAO.java
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\db\UserDAO.java
@@ -6,4 +7,5 @@ C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\GUI\MainBoa
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\GUI\MainBoardExperiment.java
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\GUI\taskCard.java
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\Model\Task.java
+C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\Model\TaskList.java
 C:\Users\Kiwit\Documents\NetBeansProjects\KanbanBoard1\src\main\java\Model\User.java

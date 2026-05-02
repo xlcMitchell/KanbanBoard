@@ -14,6 +14,7 @@ import GUI.MainBoard;
 import GUI.MainBoardExperiment;
 import db.DBConnection;
 import java.sql.Connection;
+import Controller.BoardController;
 import db.TaskDAO;
 import db.UserDAO;
 import java.util.List;
@@ -39,11 +40,22 @@ public class KanbanBoard1 {
         
         if(userList != null && !userList.isEmpty()){
         System.out.println("SUCCESS: Found " + userList.size() + " users!");}
-        
+      /*  
         java.awt.EventQueue.invokeLater(() -> {
         MainBoard frame = new MainBoard();
         frame.setVisible(true);
+    }); */
+        //display kanban board
+         java.awt.EventQueue.invokeLater(() -> {
+        MainBoardExperiment experimentframe = new MainBoardExperiment();
+        experimentframe.setVisible(true);
+        //Initialise boardcontroller
+        BoardController controller = new BoardController(experimentframe);
+        
+        controller.refreshBoard();
     });
     }
+    
+    
     
 }
