@@ -18,6 +18,27 @@ public class MainBoardExperiment extends javax.swing.JFrame {
      */
     public MainBoardExperiment() {
         initComponents();
+        
+  
+          // List of all containers to format
+          javax.swing.JPanel[] containers = {
+        requestedContainer, inprogressContainer, completeContainer, 
+        expediteRequested, expediteInProgress, expediteDone
+        };
+
+    for (javax.swing.JPanel panel : containers) {
+        if (panel != null) {
+            //Force Vertical Stack
+            panel.setLayout(new javax.swing.BoxLayout(panel, javax.swing.BoxLayout.Y_AXIS));
+            
+            //Center the container's alignment reference
+            panel.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
+           
+            //Refresh the panel
+            panel.revalidate();
+            panel.repaint();
+        }
+    }
     }
 
     /**
@@ -36,15 +57,21 @@ public class MainBoardExperiment extends javax.swing.JFrame {
         Center = new javax.swing.JPanel();
         centerContainer = new javax.swing.JPanel();
         panelGridTaskContainers = new javax.swing.JPanel();
+        RequestedScrollPane = new javax.swing.JScrollPane();
         requestedContainer = new javax.swing.JPanel();
+        InProgressScrollPane = new javax.swing.JScrollPane();
         inprogressContainer = new javax.swing.JPanel();
+        CompleteScrollPane = new javax.swing.JScrollPane();
         completeContainer = new javax.swing.JPanel();
         ExpediteSection = new javax.swing.JPanel();
         expediteHeading = new javax.swing.JPanel();
         expediteLabel = new javax.swing.JLabel();
         expediteGrid = new javax.swing.JPanel();
+        ExpediteRequestedScrollPane = new javax.swing.JScrollPane();
         expediteRequested = new javax.swing.JPanel();
+        ExpediteInProgressScrollPane = new javax.swing.JScrollPane();
         expediteInProgress = new javax.swing.JPanel();
+        ExpediteDoneScrollPane = new javax.swing.JScrollPane();
         expediteDone = new javax.swing.JPanel();
         panelGridHeadings = new javax.swing.JPanel();
         requestedHeading = new javax.swing.JPanel();
@@ -91,20 +118,32 @@ public class MainBoardExperiment extends javax.swing.JFrame {
         panelGridTaskContainers.setMaximumSize(new java.awt.Dimension(32767, 1000));
         panelGridTaskContainers.setLayout(new java.awt.GridLayout(1, 3, 15, 0));
 
+        RequestedScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
         requestedContainer.setBackground(new java.awt.Color(255, 255, 255));
         requestedContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        requestedContainer.setLayout(new java.awt.BorderLayout());
-        panelGridTaskContainers.add(requestedContainer);
+        requestedContainer.setLayout(new javax.swing.BoxLayout(requestedContainer, javax.swing.BoxLayout.LINE_AXIS));
+        RequestedScrollPane.setViewportView(requestedContainer);
+
+        panelGridTaskContainers.add(RequestedScrollPane);
+
+        InProgressScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         inprogressContainer.setBackground(new java.awt.Color(255, 255, 255));
         inprogressContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        inprogressContainer.setLayout(new java.awt.BorderLayout());
-        panelGridTaskContainers.add(inprogressContainer);
+        inprogressContainer.setLayout(new javax.swing.BoxLayout(inprogressContainer, javax.swing.BoxLayout.LINE_AXIS));
+        InProgressScrollPane.setViewportView(inprogressContainer);
+
+        panelGridTaskContainers.add(InProgressScrollPane);
+
+        CompleteScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         completeContainer.setBackground(new java.awt.Color(255, 255, 255));
         completeContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        completeContainer.setLayout(new java.awt.BorderLayout());
-        panelGridTaskContainers.add(completeContainer);
+        completeContainer.setLayout(new javax.swing.BoxLayout(completeContainer, javax.swing.BoxLayout.LINE_AXIS));
+        CompleteScrollPane.setViewportView(completeContainer);
+
+        panelGridTaskContainers.add(CompleteScrollPane);
 
         centerContainer.add(panelGridTaskContainers);
 
@@ -129,17 +168,29 @@ public class MainBoardExperiment extends javax.swing.JFrame {
         expediteGrid.setBackground(new java.awt.Color(255, 255, 255));
         expediteGrid.setLayout(new java.awt.GridLayout(1, 3, 15, 0));
 
+        ExpediteRequestedScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
         expediteRequested.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        expediteRequested.setLayout(new java.awt.BorderLayout());
-        expediteGrid.add(expediteRequested);
+        expediteRequested.setLayout(new javax.swing.BoxLayout(expediteRequested, javax.swing.BoxLayout.LINE_AXIS));
+        ExpediteRequestedScrollPane.setViewportView(expediteRequested);
+
+        expediteGrid.add(ExpediteRequestedScrollPane);
+
+        ExpediteInProgressScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         expediteInProgress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        expediteInProgress.setLayout(new java.awt.BorderLayout());
-        expediteGrid.add(expediteInProgress);
+        expediteInProgress.setLayout(new javax.swing.BoxLayout(expediteInProgress, javax.swing.BoxLayout.LINE_AXIS));
+        ExpediteInProgressScrollPane.setViewportView(expediteInProgress);
+
+        expediteGrid.add(ExpediteInProgressScrollPane);
+
+        ExpediteDoneScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         expediteDone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        expediteDone.setLayout(new java.awt.BorderLayout());
-        expediteGrid.add(expediteDone);
+        expediteDone.setLayout(new javax.swing.BoxLayout(expediteDone, javax.swing.BoxLayout.LINE_AXIS));
+        ExpediteDoneScrollPane.setViewportView(expediteDone);
+
+        expediteGrid.add(ExpediteDoneScrollPane);
 
         ExpediteSection.add(expediteGrid, java.awt.BorderLayout.CENTER);
 
@@ -292,25 +343,36 @@ public class MainBoardExperiment extends javax.swing.JFrame {
             
             // Create a simple visual label for the task
             //update in the future to be greated with task GUI
+            /*
             javax.swing.JLabel taskLabel = new javax.swing.JLabel(t.getTaskName());
             taskLabel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
             taskLabel.setForeground(java.awt.Color.RED); // Make it bright!
             taskLabel.setOpaque(true);
             taskLabel.setBackground(java.awt.Color.YELLOW);
-
+            */
+            GUI.taskCard taskLabel = new GUI.taskCard(t);
             // Match Column Name and Expedite Status to the correct Container
             if (list.getName().equalsIgnoreCase("To Do")) {
-                if (t.getSwimlane().equalsIgnoreCase("Expedite")) expediteRequested.add(taskLabel);
-                else requestedContainer.add(taskLabel);
-                
-            } else if (list.getName().equalsIgnoreCase("In Progress")) {
-                if (t.getSwimlane().equalsIgnoreCase("Expedite")) expediteInProgress.add(taskLabel);
-                else inprogressContainer.add(taskLabel);
-                
-            } else if (list.getName().equalsIgnoreCase("Done")) {
-                if (t.getSwimlane().equalsIgnoreCase("Expedite")) expediteDone.add(taskLabel);
-                else completeContainer.add(taskLabel);
-            }
+    if (t.getSwimlane().equalsIgnoreCase("Expedite")) {
+        addTaskToColumn(expediteRequested, taskLabel);
+    } else {
+        addTaskToColumn(requestedContainer, taskLabel);
+    }
+    
+} else if (list.getName().equalsIgnoreCase("In Progress")) {
+    if (t.getSwimlane().equalsIgnoreCase("Expedite")) {
+        addTaskToColumn(expediteInProgress, taskLabel);
+    } else {
+        addTaskToColumn(inprogressContainer, taskLabel);
+    }
+    
+} else if (list.getName().equalsIgnoreCase("Done")) {
+    if (t.getSwimlane().equalsIgnoreCase("Expedite")) {
+        addTaskToColumn(expediteDone, taskLabel);
+    } else {
+        addTaskToColumn(completeContainer, taskLabel);
+    }
+}
         }
     }
 
@@ -319,11 +381,25 @@ public class MainBoardExperiment extends javax.swing.JFrame {
     this.repaint();
     this.setVisible(true);
 }
+    
+ private void addTaskToColumn(javax.swing.JPanel column, taskCard card) {
+    // Add the spacer FIRST (creates space above the card)
+    column.add(javax.swing.Box.createRigidArea(new java.awt.Dimension(0, 15)));
+    
+    // Add the card
+    column.add(card);
+}
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Center;
+    private javax.swing.JScrollPane CompleteScrollPane;
+    private javax.swing.JScrollPane ExpediteDoneScrollPane;
+    private javax.swing.JScrollPane ExpediteInProgressScrollPane;
+    private javax.swing.JScrollPane ExpediteRequestedScrollPane;
     private javax.swing.JPanel ExpediteSection;
+    private javax.swing.JScrollPane InProgressScrollPane;
+    private javax.swing.JScrollPane RequestedScrollPane;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel centerContainer;
     private javax.swing.JPanel completeContainer;

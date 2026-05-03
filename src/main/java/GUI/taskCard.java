@@ -15,7 +15,28 @@ public class taskCard extends javax.swing.JPanel {
      */
     public taskCard() {
         initComponents();
+  
+        this.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
     }
+    
+    /**
+     * Custom constructor to populate the card with Task data
+     * @param task The task object containing data from the database
+     */
+    public taskCard(Model.Task task) {
+        this(); // Initialize the components first
+        
+        // Populate labels with task data
+        this.taskName.setText(task.getTaskName());
+        //this.TaskOwner.setText("Owner: " + task.getOwner());
+        this.TaskAssigned.setText("Assigned: " + task.getAssignedUser());
+        this.DueDate.setText("Due: " + task.getDueDate());
+        
+        //delete button
+        this.jButton1.setToolTipText("Delete " + task.getTaskName());
+       
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,15 +51,15 @@ public class taskCard extends javax.swing.JPanel {
         taskName = new javax.swing.JLabel();
         taskDetailGridHolder = new javax.swing.JPanel();
         taskDetailGrid = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        TaskOwner = new javax.swing.JLabel();
+        TaskAssigned = new javax.swing.JLabel();
         btnTextHolder = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        DueDate = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        setMaximumSize(new java.awt.Dimension(2147483647, 250));
+        setMaximumSize(new java.awt.Dimension(350, 150));
         setPreferredSize(new java.awt.Dimension(200, 200));
         setLayout(new java.awt.BorderLayout());
 
@@ -60,17 +81,17 @@ public class taskCard extends javax.swing.JPanel {
         taskDetailGrid.setBackground(new java.awt.Color(255, 255, 255));
         taskDetailGrid.setLayout(new java.awt.GridLayout(4, 1));
 
-        jLabel1.setText("Owner: F.Name L.Name");
-        taskDetailGrid.add(jLabel1);
+        TaskOwner.setText("Owner: F.Name L.Name");
+        taskDetailGrid.add(TaskOwner);
 
-        jLabel2.setText("Assigned: F.Name L.Name");
-        taskDetailGrid.add(jLabel2);
+        TaskAssigned.setText("Assigned: F.Name L.Name");
+        taskDetailGrid.add(TaskAssigned);
 
         btnTextHolder.setBackground(new java.awt.Color(255, 255, 255));
         btnTextHolder.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
-        jLabel3.setText("Date: 00/00/0000");
-        btnTextHolder.add(jLabel3);
+        DueDate.setText("Date: 00/00/0000");
+        btnTextHolder.add(DueDate);
 
         jButton1.setBackground(new java.awt.Color(0, 51, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -87,11 +108,11 @@ public class taskCard extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DueDate;
+    private javax.swing.JLabel TaskAssigned;
+    private javax.swing.JLabel TaskOwner;
     private javax.swing.JPanel btnTextHolder;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel taskDetailGrid;
     private javax.swing.JPanel taskDetailGridHolder;
     private javax.swing.JLabel taskName;
