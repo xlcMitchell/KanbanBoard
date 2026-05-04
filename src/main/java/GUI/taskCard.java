@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package GUI;
-
+import GUI.TaskDetailDialog; //Task Dialog class
 /**
  *
  * @author Kiwit
  */
 public class taskCard extends javax.swing.JPanel {
+    
+    private Model.Task task;
 
     /**
      * Creates new form taskCard
@@ -25,7 +27,7 @@ public class taskCard extends javax.swing.JPanel {
      */
     public taskCard(Model.Task task) {
         this(); // Initialize the components first
-        
+        this.task = task; //save the task to the global task variable
         // Populate labels with task data
         this.taskName.setText(task.getTaskName());
         //this.TaskOwner.setText("Owner: " + task.getOwner());
@@ -34,6 +36,25 @@ public class taskCard extends javax.swing.JPanel {
         
         //delete button
         this.jButton1.setToolTipText("Delete " + task.getTaskName());
+        
+        //click listener
+        this.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    // print the task retrieved to check it is correct
+                    System.out.println("Opening: " + task.getTaskName());
+                    java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(taskCard.this);
+                    TaskDetailDialog taskDialog = new TaskDetailDialog(parent,true,task);
+                    
+                
+                    taskDialog.pack(); 
+                    taskDialog.setLocationRelativeTo(parent); 
+                    taskDialog.setVisible(true);
+                }
+            }
+        });
+    
        
     }
     
