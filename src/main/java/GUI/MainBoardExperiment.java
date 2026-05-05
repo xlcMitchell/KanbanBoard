@@ -12,11 +12,12 @@ package GUI;
 public class MainBoardExperiment extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainBoardExperiment.class.getName());
-
+    private Controller.BoardController controller;
     /**
      * Creates new form MainBoard
      */
     public MainBoardExperiment() {
+        
         initComponents();
         
   

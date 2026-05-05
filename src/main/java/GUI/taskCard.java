@@ -5,6 +5,7 @@
 package GUI;
 import GUI.TaskDetailDialog; //Task Dialog class
 import GUI.TaskDetailDialogUpdated;
+import Controller.BoardController;
 /**
  *
  * @author Kiwit
@@ -12,6 +13,7 @@ import GUI.TaskDetailDialogUpdated;
 public class taskCard extends javax.swing.JPanel {
     
     private Model.Task task;
+    private BoardController controller;
 
     /**
      * Creates new form taskCard
@@ -25,10 +27,12 @@ public class taskCard extends javax.swing.JPanel {
     /**
      * Custom constructor to populate the card with Task data
      * @param task The task object containing data from the database
+     * @param controller the instance of board controller object from main method
      */
     public taskCard(Model.Task task) {
         this(); // Initialize the components first
         this.task = task; //save the task to the global task variable
+        
         // Populate labels with task data
         this.taskName.setText(task.getTaskName());
         //this.TaskOwner.setText("Owner: " + task.getOwner());

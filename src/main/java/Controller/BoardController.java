@@ -21,7 +21,7 @@ public class BoardController {
     private UserDAO userDAO;
     private List<TaskList> columnLists; // Represents the 0..* TaskList relationship
     private MainBoardExperiment boardView; // GUI reference
-
+    public static BoardController instance; 
     /**
      * @param board The GUI Board instance to control
      */
@@ -30,7 +30,7 @@ public class BoardController {
         this.taskDAO = new TaskDAO();
         this.userDAO = new UserDAO();
         this.columnLists = new ArrayList<>();
-        
+        instance = this; //so instance can be found in other classes
         // Initialize lists for To Do, In progress, Done
         columnLists.add(new TaskList(1,"To Do"));
         columnLists.add(new TaskList(2,"In Progress"));

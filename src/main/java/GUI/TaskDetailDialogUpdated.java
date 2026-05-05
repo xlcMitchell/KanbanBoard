@@ -6,6 +6,9 @@ package GUI;
 import Model.Task;
 import java.awt.Dimension;
 import db.UserDAO;
+import javax.swing.JOptionPane;
+import db.TaskDAO;
+import Controller.BoardController;
 /**
  *
  * @author Kiwit
@@ -158,7 +161,29 @@ public class TaskDetailDialogUpdated extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        // Show the confirmation first
+    int response = JOptionPane.showConfirmDialog(this, 
+        "Do you want to permanently delete this task?", 
+        "Confirm Deletion", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.WARNING_MESSAGE);
+
+    // Only proceed if they clicked 'Yes'
+    if (response == JOptionPane.YES_OPTION) {
+        // Create the DAO and call the delete method
+        TaskDAO dao = new TaskDAO();
+        boolean success = dao.deleteTask(currentTask.getTaskID());
+        
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Task successfully removed.");
+            if (BoardController.instance != null) {
+            BoardController.instance.refreshBoard(); //refresh the board
+        }
+            this.dispose(); // Close the popup
+        } else {
+            JOptionPane.showMessageDialog(this, "Error: Could not delete from database.");
+        }
+    }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**

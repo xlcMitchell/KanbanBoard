@@ -47,9 +47,10 @@ public class KanbanBoard1 {
     }); */
         //display kanban board
          java.awt.EventQueue.invokeLater(() -> {
+         
         MainBoardExperiment experimentframe = new MainBoardExperiment();
         experimentframe.setVisible(true);
-        //Initialise boardcontroller
+            //Initialise boardcontroller
         BoardController controller = new BoardController(experimentframe);
         
         controller.refreshBoard();
