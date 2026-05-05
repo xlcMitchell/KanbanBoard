@@ -37,7 +37,19 @@ public class TaskDetailDialog extends javax.swing.JDialog {
         TopPanel = new javax.swing.JPanel();
         TaskName = new javax.swing.JLabel();
         TaskDetailGrid = new javax.swing.JPanel();
+        owner = new javax.swing.JLabel();
+        ownerInput = new javax.swing.JTextField();
+        assignedLabel = new javax.swing.JLabel();
+        assignedDropDown = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        createdDateInput = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        dueDateInput = new javax.swing.JTextField();
+        description = new javax.swing.JLabel();
+        textDescriptionInput = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -61,10 +73,51 @@ public class TaskDetailDialog extends javax.swing.JDialog {
 
         Main.add(TopPanel, java.awt.BorderLayout.PAGE_START);
 
-        TaskDetailGrid.setLayout(new java.awt.GridLayout(2, 6));
+        TaskDetailGrid.setLayout(new java.awt.GridLayout(6, 2));
 
-        jLabel1.setText("jLabel1");
+        owner.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        owner.setText("Onwer");
+        TaskDetailGrid.add(owner);
+
+        ownerInput.setText("owner name");
+        TaskDetailGrid.add(ownerInput);
+
+        assignedLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        assignedLabel.setText("Assigned");
+        TaskDetailGrid.add(assignedLabel);
+
+        assignedDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TaskDetailGrid.add(assignedDropDown);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Created");
         TaskDetailGrid.add(jLabel1);
+
+        createdDateInput.setText("dd-mm-yyyy");
+        TaskDetailGrid.add(createdDateInput);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Due Date:");
+        TaskDetailGrid.add(jLabel2);
+
+        dueDateInput.setText("dd-mm-yyyy");
+        TaskDetailGrid.add(dueDateInput);
+
+        description.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        description.setText("Description: ");
+        TaskDetailGrid.add(description);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        textDescriptionInput.setViewportView(jTextArea1);
+
+        TaskDetailGrid.add(textDescriptionInput);
+
+        jButton1.setText("jButton1");
+        TaskDetailGrid.add(jButton1);
+
+        jButton2.setText("jButton2");
+        TaskDetailGrid.add(jButton2);
 
         Main.add(TaskDetailGrid, java.awt.BorderLayout.CENTER);
 
@@ -83,6 +136,18 @@ public class TaskDetailDialog extends javax.swing.JDialog {
     private javax.swing.JPanel TaskDetailGrid;
     private javax.swing.JLabel TaskName;
     private javax.swing.JPanel TopPanel;
+    private javax.swing.JComboBox<String> assignedDropDown;
+    private javax.swing.JLabel assignedLabel;
+    private javax.swing.JTextField createdDateInput;
+    private javax.swing.JLabel description;
+    private javax.swing.JTextField dueDateInput;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel owner;
+    private javax.swing.JTextField ownerInput;
+    private javax.swing.JScrollPane textDescriptionInput;
     // End of variables declaration//GEN-END:variables
 }

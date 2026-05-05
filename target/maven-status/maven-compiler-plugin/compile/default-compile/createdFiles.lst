@@ -10,4 +10,5 @@ Controller\BoardController.class
 GUI\taskCard.class
 db\DBConnection.class
 GUI\taskCard$1.class
+GUI\TaskDetailDialogUpdated.class
 Model\TaskList.class

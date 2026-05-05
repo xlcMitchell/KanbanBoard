@@ -4,6 +4,7 @@
  */
 package GUI;
 import GUI.TaskDetailDialog; //Task Dialog class
+import GUI.TaskDetailDialogUpdated;
 /**
  *
  * @author Kiwit
@@ -45,7 +46,7 @@ public class taskCard extends javax.swing.JPanel {
                     // print the task retrieved to check it is correct
                     System.out.println("Opening: " + task.getTaskName());
                     java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(taskCard.this);
-                    TaskDetailDialog taskDialog = new TaskDetailDialog(parent,true,task);
+                    TaskDetailDialogUpdated taskDialog = new TaskDetailDialogUpdated(parent,true,task);
                     
                 
                     taskDialog.pack(); 

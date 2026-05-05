@@ -43,5 +43,31 @@ public class UserDAO {
             System.err.println("UserDAO Error: " + e.getMessage());
         }
         return userList;
+    
     }
+    
+    /**
+ * Retrieves the full name of a user based on their unique ID.
+ * 
+ * @param userId The ID retrieved from the task object.
+ * @return The String name of the user, or "Unassigned" if not found.
+ */
+public String getUserNameById(int userId) {
+    System.out.println("DEBUG: Searching for User ID: " + userId); // ADD THIS
+    String name = "Unassigned";
+    // We use a WHERE clause to find the specific user
+    String sql = "SELECT userName FROM user WHERE userID = " + userId;
+
+    try (Connection conn = DBConnection.getConnection(); 
+         Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(sql)) {
+
+        if (rs.next()) {
+            // Retrieve the userName string from the result
+            name = rs.getString("userName");
+        }
+    } catch (SQLException e) {
+        System.err.println("UserDAO Lookup Error: " + e.getMessage());
+    }
+    return name;}
 }

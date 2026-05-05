@@ -6,6 +6,9 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[200, 200]"/>
+    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[400, 400]"/>
     </Property>
@@ -87,6 +90,19 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="TaskDetailGrid">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                <EmptyBorder bottom="10" left="10" right="10" top="10"/>
+              </Border>
+            </Property>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[400, 400]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="Center"/>
@@ -95,7 +111,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
             <Property name="columns" type="int" value="2"/>
-            <Property name="rows" type="int" value="6"/>
+            <Property name="horizontalGap" type="int" value="10"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="verticalGap" type="int" value="2"/>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="owner">
@@ -106,9 +124,9 @@
                 <Property name="text" type="java.lang.String" value="Onwer"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="ownerInput">
+            <Component class="javax.swing.JLabel" name="ownerField">
               <Properties>
-                <Property name="text" type="java.lang.String" value="owner name"/>
+                <Property name="text" type="java.lang.String" value="Owner Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="assignedLabel">
@@ -119,22 +137,12 @@
                 <Property name="text" type="java.lang.String" value="Assigned"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="assignedDropDown">
+            <Component class="javax.swing.JLabel" name="assignedField">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Assigned Name"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="createdLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
@@ -142,12 +150,12 @@
                 <Property name="text" type="java.lang.String" value="Created"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="createdDateInput">
+            <Component class="javax.swing.JLabel" name="createdDateField">
               <Properties>
                 <Property name="text" type="java.lang.String" value="dd-mm-yyyy"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="dueDateLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="12" style="1"/>
@@ -155,7 +163,7 @@
                 <Property name="text" type="java.lang.String" value="Due Date:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="dueDateInput">
+            <Component class="javax.swing.JLabel" name="dueDateField">
               <Properties>
                 <Property name="text" type="java.lang.String" value="dd-mm-yyyy"/>
               </Properties>
@@ -168,30 +176,68 @@
                 <Property name="text" type="java.lang.String" value="Description: "/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="textDescriptionInput">
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="descriptionField">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="btnContainer">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="Last"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="editBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="66" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Edit"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[45, 45]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[45, 23]"/>
+                </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="deleteBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton2"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="66" red="0" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Delete"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
