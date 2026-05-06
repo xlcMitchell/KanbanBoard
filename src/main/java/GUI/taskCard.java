@@ -6,6 +6,8 @@ package GUI;
 import GUI.TaskDetailDialog; //Task Dialog class
 import GUI.TaskDetailDialogUpdated;
 import Controller.BoardController;
+import db.TaskDAO;
+import db.UserDAO;
 /**
  *
  * @author Kiwit
@@ -26,7 +28,7 @@ public class taskCard extends javax.swing.JPanel {
     
     /**
      * Custom constructor to populate the card with Task data
-     * @param task The task object containing data from the database
+     * @param task The task object containing data from the database 
      * @param controller the instance of board controller object from main method
      */
     public taskCard(Model.Task task) {
@@ -36,11 +38,40 @@ public class taskCard extends javax.swing.JPanel {
         // Populate labels with task data
         this.taskName.setText(task.getTaskName());
         //this.TaskOwner.setText("Owner: " + task.getOwner());
-        this.TaskAssigned.setText("Assigned: " + task.getAssignedUser());
+        UserDAO userDao = new UserDAO();
+        TaskAssigned.setText(userDao.getUserNameById(task.getAssignedUser())); //update with actual user's name instead of their id
         this.DueDate.setText("Due: " + task.getDueDate());
         
         //delete button
         this.jButton1.setToolTipText("Delete " + task.getTaskName());
+        
+        this.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        //  Create the confirmation dialog
+        int response = javax.swing.JOptionPane.showConfirmDialog(
+            null, 
+            "Are you sure you want to delete '" + task.getTaskName() + "'?", 
+            "Confirm Deletion", 
+            javax.swing.JOptionPane.YES_NO_OPTION,
+            javax.swing.JOptionPane.WARNING_MESSAGE
+        );
+
+        //  If the user clicks 'Yes'
+        if (response == javax.swing.JOptionPane.YES_OPTION) {
+            db.TaskDAO dao = new db.TaskDAO();
+            
+            if (dao.deleteTask(task.getTaskID())) {
+                // Use board controller instance to call refresh board method
+                if (Controller.BoardController.instance != null) {
+                    Controller.BoardController.instance.refreshBoard();
+                }
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "Error: Could not delete task.");
+            }
+        }
+            }
+     });
         
         //click listener
         this.addMouseListener(new java.awt.event.MouseAdapter() {

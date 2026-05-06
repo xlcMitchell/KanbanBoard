@@ -8,6 +8,7 @@ Model\User.class
 com\mycompany\kanbanboard1\KanbanBoard1.class
 Controller\BoardController.class
 GUI\taskCard.class
+GUI\taskCard$2.class
 db\DBConnection.class
 GUI\taskCard$1.class
 GUI\TaskDetailDialogUpdated.class
