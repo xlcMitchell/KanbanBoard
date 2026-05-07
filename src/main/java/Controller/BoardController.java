@@ -90,6 +90,12 @@ public class BoardController {
             refreshBoard();
         }
     }
+    
+     public void handleUpdateTask(Task t) {
+        if (taskDAO.updateTask(t)) {
+            refreshBoard();
+        }
+    }
 
     //Delete task from board if returns true the board refreshed
     public void handleDeleteTask(int taskID) {

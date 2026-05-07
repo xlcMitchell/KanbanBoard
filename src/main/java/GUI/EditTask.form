@@ -74,7 +74,7 @@
                   <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Task Name"/>
+                <Property name="text" type="java.lang.String" value="Edit Task"/>
                 <Property name="verticalAlignment" type="int" value="1"/>
                 <Property name="verticalTextPosition" type="int" value="1"/>
               </Properties>
@@ -113,6 +113,30 @@
             <Property name="verticalGap" type="int" value="2"/>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="taskName">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Task Name *"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="taskNameField">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="10" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Enter Task Name (Max 50 chars) "/>
+              </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="taskNameFieldFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="taskNameFieldFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taskNameFieldActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JLabel" name="owner">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -123,7 +147,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="ownerField">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Owner Name"/>
+                <Property name="text" type="java.lang.String" value="Mitchell Travis"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="assignedLabel">
@@ -134,23 +158,15 @@
                 <Property name="text" type="java.lang.String" value="Assigned"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="assignedField">
+            <Component class="javax.swing.JComboBox" name="assignedUserDropDown">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Assigned Name"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="createdLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Created"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="createdDateField">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="dd-mm-yyyy"/>
-              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Model.User&gt;"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="dueDateLabel">
               <Properties>
@@ -160,10 +176,17 @@
                 <Property name="text" type="java.lang.String" value="Due Date:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="dueDateField">
+            <Component class="javax.swing.JTextField" name="dueDateField">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="dd-mm-yyyy"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dueDateFieldFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dueDateFieldFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="description">
               <Properties>
@@ -173,19 +196,29 @@
                 <Property name="text" type="java.lang.String" value="Description: "/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Container class="javax.swing.JScrollPane" name="scrollPaneTxtArea">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="descriptionField">
+                <Component class="javax.swing.JTextArea" name="descriptionTxtArea">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="10" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                    </Property>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="text" type="java.lang.String" value="Add description (Max 200 chars)"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="descriptionTxtAreaFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="descriptionTxtAreaFocusLost"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -205,7 +238,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="editBtn">
+            <Component class="javax.swing.JButton" name="saveBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="0" type="rgb"/>
@@ -213,7 +246,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Edit"/>
+                <Property name="text" type="java.lang.String" value="Save"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[45, 45]"/>
                 </Property>
@@ -222,10 +255,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="editBtnMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="saveBtnMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="deleteBtn">
+            <Component class="javax.swing.JButton" name="cancelBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="0" type="rgb"/>
@@ -233,10 +266,10 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Delete"/>
+                <Property name="text" type="java.lang.String" value="Cancel"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -9,6 +9,7 @@ import db.UserDAO;
 import javax.swing.JOptionPane;
 import db.TaskDAO;
 import Controller.BoardController;
+import GUI.EditTask;
 /**
  *
  * @author Kiwit
@@ -71,7 +72,6 @@ public class TaskDetailDialogUpdated extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(200, 200));
         setMinimumSize(new java.awt.Dimension(400, 400));
         setModal(true);
 
@@ -145,6 +145,11 @@ public class TaskDetailDialogUpdated extends javax.swing.JDialog {
         editBtn.setText("Edit");
         editBtn.setMaximumSize(new java.awt.Dimension(45, 45));
         editBtn.setMinimumSize(new java.awt.Dimension(45, 23));
+        editBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editBtnMouseClicked(evt);
+            }
+        });
         btnContainer.add(editBtn);
 
         deleteBtn.setBackground(new java.awt.Color(0, 102, 255));
@@ -185,6 +190,21 @@ public class TaskDetailDialogUpdated extends javax.swing.JDialog {
         }
     }
     }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void editBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editBtnMouseClicked
+        // TODO add your handling code here:
+        //gets the parent frame so another dialog can be opened
+         java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this);
+         
+         EditTask editDialog = new EditTask(parent, true,this.currentTask);
+    
+         this.dispose();
+         // Show the edit dialog
+         editDialog.pack();
+         editDialog.setLocationRelativeTo(parent);
+         editDialog.setVisible(true);
+         
+    }//GEN-LAST:event_editBtnMouseClicked
 
     /**
      * @param args the command line arguments
