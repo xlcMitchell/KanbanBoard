@@ -24,6 +24,8 @@ public class User {
     }
 
     //Getters and Setters
+    
+  
     public int getUserID() {
         return userID;
     }
@@ -51,6 +53,6 @@ public class User {
     // toString method 
     @Override
     public String toString() {
-        return "User [ID=" + userID + ", Name=" + userName + ", Email=" + email + "]";
+        return this.userName;
     }
 }

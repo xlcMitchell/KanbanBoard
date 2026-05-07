@@ -1,4 +1,5 @@
 package GUI;
+import GUI.AddTaskDialog;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -102,6 +103,11 @@ public class MainBoardExperiment extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Add Task");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         topPanel.add(jButton1, java.awt.BorderLayout.LINE_END);
 
         bodyPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
@@ -300,6 +306,17 @@ public class MainBoardExperiment extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(MainBoardExperiment.this);
+                    AddTaskDialog taskDialog = new AddTaskDialog(parent,true);
+                    
+                
+                    taskDialog.pack(); 
+                    taskDialog.setLocationRelativeTo(parent); 
+                    taskDialog.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
