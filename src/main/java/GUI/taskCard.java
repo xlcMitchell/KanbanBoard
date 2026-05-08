@@ -44,7 +44,6 @@ public class taskCard extends javax.swing.JPanel {
         this.TaskOwner.setText("Mitchell Travis"); //just using my name as the owner for now
         //delete button
         this.jButton1.setToolTipText("Delete " + task.getTaskName());
-        
         this.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
     @Override
     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,7 +87,10 @@ public class taskCard extends javax.swing.JPanel {
                     taskDialog.setLocationRelativeTo(parent); 
                     taskDialog.setVisible(true);
                 }
+                
+                if(evt.getClickCount() == 1){}
             }
+            
         });
     
        

@@ -25,7 +25,7 @@ public class EditTask extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.currentTask = task;
-        Dimension fixedSize = new Dimension(400, 400); 
+        Dimension fixedSize = new Dimension(500, 550); 
         populateUserComboBox();
         this.getContentPane().requestFocusInWindow(); //stop the focus being on the first input field
          this.setMinimumSize(fixedSize);
@@ -42,6 +42,12 @@ public class EditTask extends javax.swing.JDialog {
             
             descriptionTxtArea.setText(currentTask.getTaskDescription());
             descriptionTxtArea.setForeground(java.awt.Color.BLACK);
+            
+            // preselect the current column in the dropdown
+            //Indexes match because of "select column.. " option
+            int dbStatus = task.getColumnID(); 
+            columnSelection.setSelectedIndex(dbStatus);
+            swimlaneSelection.setSelectedItem(task.getSwimlane());
 
             // Select the assigned user in the dropdown
             for (int i = 0; i < assignedUserDropDown.getItemCount(); i++) {
@@ -117,6 +123,22 @@ public class EditTask extends javax.swing.JDialog {
         showError("Description must be 200 characters or less.");
         return false;
     }
+    //column selection 
+    if (columnSelection.getSelectedIndex() <= 0) { // 0 is "Please select..."
+    JOptionPane.showMessageDialog(this, 
+        "Task must be assigned to a column.", 
+        "Validation Error", 
+        JOptionPane.WARNING_MESSAGE);
+    return false; 
+    }
+    
+      if (swimlaneSelection.getSelectedIndex() <= 0) { // 0 is "Please select..."
+    JOptionPane.showMessageDialog(this, 
+        "Task must be assigned to a swimlane.", 
+        "Validation Error", 
+        JOptionPane.WARNING_MESSAGE);
+    return false; 
+    }
 
     return true; // All checks passed
 }
@@ -145,6 +167,10 @@ public class EditTask extends javax.swing.JDialog {
         ownerField = new javax.swing.JLabel();
         assignedLabel = new javax.swing.JLabel();
         assignedUserDropDown = new javax.swing.JComboBox<>();
+        columnLabel = new javax.swing.JLabel();
+        columnSelection = new javax.swing.JComboBox<>();
+        swimlaneLabel = new javax.swing.JLabel();
+        swimlaneSelection = new javax.swing.JComboBox<>();
         dueDateLabel = new javax.swing.JLabel();
         dueDateField = new javax.swing.JTextField();
         description = new javax.swing.JLabel();
@@ -179,7 +205,7 @@ public class EditTask extends javax.swing.JDialog {
         TaskDetailGrid.setBackground(new java.awt.Color(255, 255, 255));
         TaskDetailGrid.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         TaskDetailGrid.setMaximumSize(new java.awt.Dimension(400, 400));
-        TaskDetailGrid.setLayout(new java.awt.GridLayout(5, 2, 10, 2));
+        TaskDetailGrid.setLayout(new java.awt.GridLayout(8, 2, 10, 2));
 
         taskName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         taskName.setText("Task Name *");
@@ -211,6 +237,20 @@ public class EditTask extends javax.swing.JDialog {
         TaskDetailGrid.add(assignedLabel);
 
         TaskDetailGrid.add(assignedUserDropDown);
+
+        columnLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        columnLabel.setText("Column");
+        TaskDetailGrid.add(columnLabel);
+
+        columnSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Column..", "Requested", "In Progress", "Done" }));
+        TaskDetailGrid.add(columnSelection);
+
+        swimlaneLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        swimlaneLabel.setText("Swimlane");
+        TaskDetailGrid.add(swimlaneLabel);
+
+        swimlaneSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Swimlane...", "Standard", "Expedite", " " }));
+        TaskDetailGrid.add(swimlaneSelection);
 
         dueDateLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         dueDateLabel.setText("Due Date:");
@@ -293,7 +333,8 @@ public class EditTask extends javax.swing.JDialog {
             
             User selectedUser = (User) assignedUserDropDown.getSelectedItem();
             currentTask.setAssignedUser(selectedUser.getUserID());
-
+            currentTask.setColumnID(columnSelection.getSelectedIndex());
+            currentTask.setSwimlane(swimlaneSelection.getSelectedItem().toString());
             // Call the Update method in the Controller
             // the existing ID and ColumnID already stored in currentTask
             BoardController.instance.handleUpdateTask(currentTask);
@@ -373,6 +414,8 @@ public class EditTask extends javax.swing.JDialog {
     private javax.swing.JComboBox<Model.User> assignedUserDropDown;
     private javax.swing.JPanel btnContainer;
     private javax.swing.JButton cancelBtn;
+    private javax.swing.JLabel columnLabel;
+    private javax.swing.JComboBox<String> columnSelection;
     private javax.swing.JLabel description;
     private javax.swing.JTextArea descriptionTxtArea;
     private javax.swing.JTextField dueDateField;
@@ -381,6 +424,8 @@ public class EditTask extends javax.swing.JDialog {
     private javax.swing.JLabel ownerField;
     private javax.swing.JButton saveBtn;
     private javax.swing.JScrollPane scrollPaneTxtArea;
+    private javax.swing.JLabel swimlaneLabel;
+    private javax.swing.JComboBox<String> swimlaneSelection;
     private javax.swing.JLabel taskName;
     private javax.swing.JTextField taskNameField;
     // End of variables declaration//GEN-END:variables
