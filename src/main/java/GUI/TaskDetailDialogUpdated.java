@@ -37,6 +37,7 @@ public class TaskDetailDialogUpdated extends javax.swing.JDialog {
         TaskName.setText(task.getTaskName());
         ownerField.setText("Mitchell Travis"); //database missing owner field will be added in the future
         assignedField.setText(userDao.getUserNameById(task.getAssignedUser())); //update with actual user's name instead of their id
+        ownerField.setText(userDao.getUserNameById(task.getOwner()));
         createdDateField.setText(task.getTimestamp());
         dueDateField.setText(task.getDueDate());
         descriptionField.setText(task.getTaskDescription());

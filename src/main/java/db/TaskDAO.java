@@ -32,7 +32,7 @@ public class TaskDAO {
         return false; 
     }
         
-        String sql = "INSERT INTO task (taskName, taskDescription, dueDate, assignedUser,taskList, position, swimlane) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO task (taskName, taskDescription, dueDate, assignedUser,taskList, position, swimlane,owner_id) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
         
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -44,6 +44,7 @@ public class TaskDAO {
             pstmt.setInt(5, task.getColumnID());
             pstmt.setInt(6, task.getPosition());
             pstmt.setString(7, task.getSwimlane());
+            pstmt.setInt(8,task.getOwner());
             
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -71,7 +72,8 @@ public class TaskDAO {
                     rs.getInt("assignedUser"),
                     rs.getInt("taskList"),
                     rs.getInt("position"),
-                    rs.getString("swimlane")
+                    rs.getString("swimlane"),
+                    rs.getInt("owner_id")
                 ));
             }
         } catch (SQLException e) {
@@ -94,22 +96,25 @@ public class TaskDAO {
         System.err.println("Validation Fail: Task name cannot be empty.");
         return false; 
     }
-        String sql = "UPDATE task SET taskName=?, taskDescription=?, dueDate=?, assignedUser=?,taskList=?, position=?, swimlane=? WHERE taskID=?";
-        
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
-            pstmt.setString(1, task.getTaskName());
-            pstmt.setString(2, task.getTaskDescription());
-            pstmt.setString(3, task.getDueDate());
-            pstmt.setInt(4, task.getAssignedUser());
-            pstmt.setInt(5, task.getColumnID());
-            pstmt.setInt(6, task.getPosition());
-            pstmt.setString(7, task.getSwimlane());
-            pstmt.setInt(8, task.getTaskID());
-            
-            return pstmt.executeUpdate() > 0;
-        } catch (SQLException e) {
+       
+       String sql = "UPDATE task SET taskName=?, taskDescription=?, dueDate=?, assignedUser=?, taskList=?, position=?, swimlane=?, owner_id=? WHERE taskID=?";
+
+       try (Connection conn = DBConnection.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    
+     
+           pstmt.setString(1, task.getTaskName());
+           pstmt.setString(2, task.getTaskDescription());
+           pstmt.setString(3, task.getDueDate());
+           pstmt.setInt(4, task.getAssignedUser());
+           pstmt.setInt(5, task.getColumnID());
+           pstmt.setInt(6, task.getPosition());
+           pstmt.setString(7, task.getSwimlane());
+           pstmt.setInt(8, task.getOwner());      
+           pstmt.setInt(9, task.getTaskID());     
+    
+    return pstmt.executeUpdate() > 0;
+     } catch (SQLException e) {
             System.err.println("Error updating task: " + e.getMessage());
             return false;
         }
@@ -149,7 +154,7 @@ public class TaskDAO {
     public boolean moveTask(int taskID, int newColumn, boolean isExpedited) {
  
     String swimlaneValue = isExpedited ? "Expedite" : "Standard";
-    String sql = "UPDATE tasks SET taskList = ?, swimlane = ? WHERE taskID = ?";
+    String sql = "UPDATE task SET taskList = ?, swimlane = ? WHERE taskID = ?";
 
     try (Connection conn = DBConnection.getConnection();
          PreparedStatement pstmt = conn.prepareStatement(sql)) {

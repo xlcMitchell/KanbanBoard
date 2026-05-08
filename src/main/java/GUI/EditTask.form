@@ -145,10 +145,15 @@
                 <Property name="text" type="java.lang.String" value="Onwer"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="ownerField">
+            <Component class="javax.swing.JComboBox" name="ownerSelection">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Mitchell Travis"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Model.User&gt;"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="assignedLabel">
               <Properties>

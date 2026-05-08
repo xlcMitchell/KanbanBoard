@@ -24,8 +24,9 @@ public class AddTaskDialog extends javax.swing.JDialog {
     public AddTaskDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Dimension fixedSize = new Dimension(400, 400); 
-        populateUserComboBox();
+        Dimension fixedSize = new Dimension(450, 400); 
+        populateUserComboBox(assignedUserDropDown);
+        populateUserComboBox(ownerSelection);
         this.getContentPane().requestFocusInWindow(); //stop the focus being on the first input field
          this.setMinimumSize(fixedSize);
          this.setPreferredSize(fixedSize);
@@ -38,28 +39,21 @@ public class AddTaskDialog extends javax.swing.JDialog {
     
     }
     
-    public void populateUserComboBox() {
-    
+   public void populateUserComboBox(javax.swing.JComboBox targetBox) {
     db.UserDAO userDao = new db.UserDAO();
-    
-    // Fetch the list of users from SQLite
     java.util.List<Model.User> users = userDao.getAllUsers();
     
-    //clear existing items to prevent duplicates if refreshed
-     assignedUserDropDown.removeAllItems();
+    targetBox.removeAllItems();
     
-     //creating user object to add as the select user option to the drop down
+    // Add the prompt
     Model.User prompt = new Model.User();
     prompt.setUserName("Select User...");
-    prompt.setUserID(-1); // -1 so it is not mistaken as a real user
+    prompt.setUserID(-1); 
+    targetBox.addItem(prompt);
     
-    assignedUserDropDown.addItem(prompt);
-    
-    //through and add them to the dropdown
+    // Add all users
     for (Model.User u : users) {
-       //add user name to dropdown
-       assignedUserDropDown.addItem(u); 
-     
+        targetBox.addItem(u); 
     }
 }
     
@@ -68,6 +62,7 @@ public class AddTaskDialog extends javax.swing.JDialog {
     String description = descriptionTxtArea.getText().trim();
     String dateStr = dueDateField.getText().trim();
     Object selectedUser = assignedUserDropDown.getSelectedItem();
+    Object selectedUserOwner = ownerSelection.getSelectedItem();
 
     //Task Name Validation (Not empty, not placeholder, max 50 chars)
     if (name.isEmpty() || name.equals("Enter Task Name (Max 50 chars)")) {
@@ -81,6 +76,12 @@ public class AddTaskDialog extends javax.swing.JDialog {
 
     // User Selection Validation
    if (!(selectedUser instanceof User) || ((User)selectedUser).getUserID() == -1) {
+            showError("Please select a valid user.");
+            return false;
+        }
+   
+    // User Selection Validation
+   if (!(selectedUserOwner instanceof User) || ((User)selectedUserOwner).getUserID() == -1) {
             showError("Please select a valid user.");
             return false;
         }
@@ -121,7 +122,7 @@ public class AddTaskDialog extends javax.swing.JDialog {
         taskName = new javax.swing.JLabel();
         taskNameField = new javax.swing.JTextField();
         owner = new javax.swing.JLabel();
-        ownerField = new javax.swing.JLabel();
+        ownerSelection = new javax.swing.JComboBox<>();
         assignedLabel = new javax.swing.JLabel();
         assignedUserDropDown = new javax.swing.JComboBox<>();
         dueDateLabel = new javax.swing.JLabel();
@@ -182,8 +183,7 @@ public class AddTaskDialog extends javax.swing.JDialog {
         owner.setText("Onwer");
         TaskDetailGrid.add(owner);
 
-        ownerField.setText("Mitchell Travis");
-        TaskDetailGrid.add(ownerField);
+        TaskDetailGrid.add(ownerSelection);
 
         assignedLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         assignedLabel.setText("Assigned");
@@ -270,13 +270,16 @@ public class AddTaskDialog extends javax.swing.JDialog {
         String desc = descriptionTxtArea.getText().trim();
         String date = dueDateField.getText().trim();
         User selectedUser = (Model.User) assignedUserDropDown.getSelectedItem();
+        User selectedOwner = (Model.User) ownerSelection.getSelectedItem();
+        
         Task newTask = new Task();
         newTask.setTaskName(name);
         newTask.setTaskDescription(desc);
         newTask.setDueDate(date);
         newTask.setAssignedUser(selectedUser.getUserID());
-        newTask.setSwimlane("standard"); //start new tasks in the standard swimlane
+        newTask.setSwimlane("Standard"); //start new tasks in the standard swimlane
         newTask.setColumnID(1); //start new tasks in the requested column
+        newTask.setOwner(selectedOwner.getUserID());
         BoardController.instance.handleAddTask(newTask);
         this.dispose();
         }
@@ -357,7 +360,7 @@ public class AddTaskDialog extends javax.swing.JDialog {
     private javax.swing.JTextField dueDateField;
     private javax.swing.JLabel dueDateLabel;
     private javax.swing.JLabel owner;
-    private javax.swing.JLabel ownerField;
+    private javax.swing.JComboBox<Model.User> ownerSelection;
     private javax.swing.JButton saveBtn;
     private javax.swing.JScrollPane scrollPaneTxtArea;
     private javax.swing.JLabel taskName;

@@ -41,7 +41,7 @@ public class taskCard extends javax.swing.JPanel {
         UserDAO userDao = new UserDAO();
         TaskAssigned.setText(userDao.getUserNameById(task.getAssignedUser())); //update with actual user's name instead of their id
         this.DueDate.setText("Due: " + task.getDueDate());
-        this.TaskOwner.setText("Mitchell Travis"); //just using my name as the owner for now
+        this.TaskOwner.setText(userDao.getUserNameById(task.getOwner())); 
         //delete button
         this.jButton1.setToolTipText("Delete " + task.getTaskName());
         this.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {

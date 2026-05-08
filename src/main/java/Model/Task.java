@@ -15,6 +15,7 @@ public class Task {
     private String timestamp;
     private String dueDate;
     private int assignedUser; // References UserID
+    private int owner;
     private int columnID;     // 1=Requested, 2=In Progress, 3=Done
     private int position;     // Order within the column
     private String swimlane;  // "Standard" or "Expedite"
@@ -24,7 +25,7 @@ public class Task {
 
     // Full Constructor for loading from DAO
     public Task(int taskID, String taskName, String taskDescription, String timestamp, 
-                String dueDate, int assignedUser, int columnID, int position, String swimlane) {
+                String dueDate, int assignedUser, int columnID, int position, String swimlane,int owner) {
         this.taskID = taskID;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
@@ -34,6 +35,7 @@ public class Task {
         this.columnID = columnID;
         this.position = position;
         this.swimlane = swimlane;
+        this.owner = owner;
     }
 
     // Getters and Setters
@@ -54,6 +56,9 @@ public class Task {
 
     public int getAssignedUser() { return assignedUser; }
     public void setAssignedUser(int assignedUser) { this.assignedUser = assignedUser; }
+    
+    public int getOwner() { return owner; }
+    public void setOwner(int owner) { this.owner = owner; }
 
     public int getColumnID() { return columnID; }
     public void setColumnID(int columnID) { this.columnID = columnID; }

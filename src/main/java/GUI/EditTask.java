@@ -57,6 +57,15 @@ public class EditTask extends javax.swing.JDialog {
                     break;
                 }
             }
+            
+            // Select the Task Owner in the dropdown
+          for (int i = 0; i < ownerSelection.getItemCount(); i++) {
+               User u = ownerSelection.getItemAt(i);
+              if (u.getUserID() == currentTask.getOwner()) { // Assuming getOwner() returns the ID
+                    ownerSelection.setSelectedIndex(i);
+                     break;
+    }
+}
         }
          
         
@@ -66,28 +75,24 @@ public class EditTask extends javax.swing.JDialog {
     }
     
     public void populateUserComboBox() {
+         db.UserDAO userDao = new db.UserDAO();
+         java.util.List<Model.User> users = userDao.getAllUsers();
     
-    db.UserDAO userDao = new db.UserDAO();
+          // Clear both
+         assignedUserDropDown.removeAllItems();
+         ownerSelection.removeAllItems();
     
-    // Fetch the list of users from SQLite
-    java.util.List<Model.User> users = userDao.getAllUsers();
+         Model.User prompt = new Model.User();
+         prompt.setUserName("Select User...");
+         prompt.setUserID(-1);
     
-    //clear existing items to prevent duplicates if refreshed
-     assignedUserDropDown.removeAllItems();
+         assignedUserDropDown.addItem(prompt);
+         ownerSelection.addItem(prompt);
     
-     //creating user object to add as the select user option to the drop down
-    Model.User prompt = new Model.User();
-    prompt.setUserName("Select User...");
-    prompt.setUserID(-1); // -1 so it is not mistaken as a real user
-    
-    assignedUserDropDown.addItem(prompt);
-    
-    //through and add them to the dropdown
-    for (Model.User u : users) {
-       //add user name to dropdown
-       assignedUserDropDown.addItem(u); 
-     
-    }
+         for (Model.User u : users) {
+            assignedUserDropDown.addItem(u); 
+            ownerSelection.addItem(u); // Add to the owner dropdown too
+        }
 }
     
     private boolean validateInputs() {
@@ -95,6 +100,12 @@ public class EditTask extends javax.swing.JDialog {
     String description = descriptionTxtArea.getText().trim();
     String dateStr = dueDateField.getText().trim();
     Object selectedUser = assignedUserDropDown.getSelectedItem();
+    Object selectedOwner = ownerSelection.getSelectedItem();
+    
+    if (!(selectedOwner instanceof User) || ((User)selectedOwner).getUserID() == -1) {
+    showError("Please select a valid task owner.");
+    return false;
+}
 
     //Task Name Validation (Not empty, not placeholder, max 50 chars)
     if (name.isEmpty() || name.equals("Enter Task Name (Max 50 chars)")) {
@@ -164,7 +175,7 @@ public class EditTask extends javax.swing.JDialog {
         taskName = new javax.swing.JLabel();
         taskNameField = new javax.swing.JTextField();
         owner = new javax.swing.JLabel();
-        ownerField = new javax.swing.JLabel();
+        ownerSelection = new javax.swing.JComboBox<>();
         assignedLabel = new javax.swing.JLabel();
         assignedUserDropDown = new javax.swing.JComboBox<>();
         columnLabel = new javax.swing.JLabel();
@@ -229,8 +240,7 @@ public class EditTask extends javax.swing.JDialog {
         owner.setText("Onwer");
         TaskDetailGrid.add(owner);
 
-        ownerField.setText("Mitchell Travis");
-        TaskDetailGrid.add(ownerField);
+        TaskDetailGrid.add(ownerSelection);
 
         assignedLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         assignedLabel.setText("Assigned");
@@ -333,6 +343,8 @@ public class EditTask extends javax.swing.JDialog {
             
             User selectedUser = (User) assignedUserDropDown.getSelectedItem();
             currentTask.setAssignedUser(selectedUser.getUserID());
+            User selectedOwner = (User) ownerSelection.getSelectedItem();
+            currentTask.setOwner(selectedOwner.getUserID());
             currentTask.setColumnID(columnSelection.getSelectedIndex());
             currentTask.setSwimlane(swimlaneSelection.getSelectedItem().toString());
             // Call the Update method in the Controller
@@ -340,7 +352,7 @@ public class EditTask extends javax.swing.JDialog {
             BoardController.instance.handleUpdateTask(currentTask);
             
             this.dispose(); // Close the edit window
-        this.dispose();
+        
         }
     }//GEN-LAST:event_saveBtnMouseClicked
 
@@ -421,7 +433,7 @@ public class EditTask extends javax.swing.JDialog {
     private javax.swing.JTextField dueDateField;
     private javax.swing.JLabel dueDateLabel;
     private javax.swing.JLabel owner;
-    private javax.swing.JLabel ownerField;
+    private javax.swing.JComboBox<Model.User> ownerSelection;
     private javax.swing.JButton saveBtn;
     private javax.swing.JScrollPane scrollPaneTxtArea;
     private javax.swing.JLabel swimlaneLabel;
