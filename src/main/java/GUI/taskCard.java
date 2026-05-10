@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package GUI;
-import GUI.TaskDetailDialog; //Task Dialog class
 import GUI.TaskDetailDialogUpdated;
 import Controller.BoardController;
 import db.TaskDAO;
@@ -39,9 +38,9 @@ public class taskCard extends javax.swing.JPanel {
         this.taskName.setText(task.getTaskName());
         //this.TaskOwner.setText("Owner: " + task.getOwner());
         UserDAO userDao = new UserDAO();
-        TaskAssigned.setText(userDao.getUserNameById(task.getAssignedUser())); //update with actual user's name instead of their id
+        TaskAssigned.setText("Assigned: " + userDao.getUserNameById(task.getAssignedUser())); //update with actual user's name instead of their id
         this.DueDate.setText("Due: " + task.getDueDate());
-        this.TaskOwner.setText(userDao.getUserNameById(task.getOwner())); 
+        this.TaskOwner.setText("Owner: " + userDao.getUserNameById(task.getOwner())); 
         //delete button
         this.jButton1.setToolTipText("Delete " + task.getTaskName());
         this.jButton1.addMouseListener(new java.awt.event.MouseAdapter() {

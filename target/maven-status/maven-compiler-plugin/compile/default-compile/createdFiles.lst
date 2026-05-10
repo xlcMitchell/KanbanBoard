@@ -1,5 +1,4 @@
 GUI\AddTaskDialog$1.class
-GUI\TaskDetailDialog.class
 GUI\MainBoardExperiment.class
 GUI\EditTask$2.class
 GUI\AddTaskDialog.class
@@ -15,7 +14,6 @@ Model\Task.class
 db\UserDAO.class
 GUI\EditTask$1.class
 GUI\EditTask$3.class
-GUI\MainBoard.class
 GUI\EditTask.class
 db\TaskDAO.class
 GUI\AddTaskDialog$2.class

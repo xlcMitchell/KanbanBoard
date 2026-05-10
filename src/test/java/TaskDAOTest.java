@@ -21,7 +21,7 @@ public class TaskDAOTest {
         
         
         
-     Task newTask = new Task(0, "Design Wire Frames", "JUnit Test",null, "10-10-2026", 1, 1, 1, "Standard");
+     Task newTask = new Task(0, "Design Wire Frames", "JUnit Test",null, "10-10-2026", 1, 1, 1, "Standard",1);
 
         // Test the Create (Insert)
         boolean created = dao.createTask(newTask);
@@ -79,7 +79,7 @@ public void testCreateTaskWithWrongDateFormat() {
         "JUnit Test", 
         null, 
         "2026-10-10", // wrong date format
-        1, 1, 1, "Standard"
+        1, 1, 1, "Standard",1
     );
 
     // 1. Execute the insertion
@@ -96,7 +96,7 @@ public void testCreateTaskWithEmptyName() {
     TaskDAO dao = new TaskDAO();
     
     // Creating a task with an empty string for the name
-    Task emptyNameTask = new Task(0, "", "Testing empty name", null, "10-10-2026", 1, 1, 1, "Standard");
+    Task emptyNameTask = new Task(0, "", "Testing empty name", null, "10-10-2026", 1, 1, 1, "Standard",1);
 
     // Execute
     boolean result = dao.createTask(emptyNameTask);

@@ -55,7 +55,7 @@ public class TaskTest {
     
     @Test
     public void testFullConstructor() {
-        Task task = new Task(5, "Test UI", "Build GUI", "2026-04-28", "30-04-2026", 2, 1, 1, "Expedite");
+        Task task = new Task(5, "Test UI", "Build GUI", "2026-04-28", "30-04-2026", 2, 1, 1, "Expedite",1);
         
         assertEquals(5, task.getTaskID());
         assertEquals("Test UI", task.getTaskName());
