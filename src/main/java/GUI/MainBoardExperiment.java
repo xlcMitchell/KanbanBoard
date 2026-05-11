@@ -125,28 +125,28 @@ public class MainBoardExperiment extends javax.swing.JFrame {
         panelGridTaskContainers.setMaximumSize(new java.awt.Dimension(32767, 1000));
         panelGridTaskContainers.setLayout(new java.awt.GridLayout(1, 3, 15, 0));
 
-        RequestedScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RequestedScrollPane.setBorder(null);
 
-        requestedContainer.setBackground(new java.awt.Color(255, 255, 255));
-        requestedContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        requestedContainer.setBackground(new java.awt.Color(248, 248, 248));
+        requestedContainer.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
         requestedContainer.setLayout(new javax.swing.BoxLayout(requestedContainer, javax.swing.BoxLayout.LINE_AXIS));
         RequestedScrollPane.setViewportView(requestedContainer);
 
         panelGridTaskContainers.add(RequestedScrollPane);
 
-        InProgressScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        InProgressScrollPane.setBorder(null);
 
-        inprogressContainer.setBackground(new java.awt.Color(255, 255, 255));
-        inprogressContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inprogressContainer.setBackground(new java.awt.Color(248, 248, 248));
+        inprogressContainer.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
         inprogressContainer.setLayout(new javax.swing.BoxLayout(inprogressContainer, javax.swing.BoxLayout.LINE_AXIS));
         InProgressScrollPane.setViewportView(inprogressContainer);
 
         panelGridTaskContainers.add(InProgressScrollPane);
 
-        CompleteScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        CompleteScrollPane.setBorder(null);
 
-        completeContainer.setBackground(new java.awt.Color(255, 255, 255));
-        completeContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        completeContainer.setBackground(new java.awt.Color(248, 248, 248));
+        completeContainer.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
         completeContainer.setLayout(new javax.swing.BoxLayout(completeContainer, javax.swing.BoxLayout.LINE_AXIS));
         CompleteScrollPane.setViewportView(completeContainer);
 
@@ -175,25 +175,28 @@ public class MainBoardExperiment extends javax.swing.JFrame {
         expediteGrid.setBackground(new java.awt.Color(255, 255, 255));
         expediteGrid.setLayout(new java.awt.GridLayout(1, 3, 15, 0));
 
-        ExpediteRequestedScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ExpediteRequestedScrollPane.setBorder(null);
 
-        expediteRequested.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        expediteRequested.setBackground(new java.awt.Color(248, 248, 248));
+        expediteRequested.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
         expediteRequested.setLayout(new javax.swing.BoxLayout(expediteRequested, javax.swing.BoxLayout.LINE_AXIS));
         ExpediteRequestedScrollPane.setViewportView(expediteRequested);
 
         expediteGrid.add(ExpediteRequestedScrollPane);
 
-        ExpediteInProgressScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ExpediteInProgressScrollPane.setBorder(null);
 
-        expediteInProgress.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        expediteInProgress.setBackground(new java.awt.Color(248, 248, 248));
+        expediteInProgress.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
         expediteInProgress.setLayout(new javax.swing.BoxLayout(expediteInProgress, javax.swing.BoxLayout.LINE_AXIS));
         ExpediteInProgressScrollPane.setViewportView(expediteInProgress);
 
         expediteGrid.add(ExpediteInProgressScrollPane);
 
-        ExpediteDoneScrollPane.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ExpediteDoneScrollPane.setBorder(null);
 
-        expediteDone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        expediteDone.setBackground(new java.awt.Color(248, 248, 248));
+        expediteDone.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 10)));
         expediteDone.setLayout(new javax.swing.BoxLayout(expediteDone, javax.swing.BoxLayout.LINE_AXIS));
         ExpediteDoneScrollPane.setViewportView(expediteDone);
 

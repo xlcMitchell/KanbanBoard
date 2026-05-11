@@ -116,7 +116,7 @@ public class taskCard extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         setMaximumSize(new java.awt.Dimension(350, 150));
         setPreferredSize(new java.awt.Dimension(200, 200));
         setLayout(new java.awt.BorderLayout());
